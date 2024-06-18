@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>输入单身狗信息</button>
+    <input type="text" placeholder="输入单身狗姓名">
+    <img src="" alt="">
+    <script>
+        const button = document.querySelector('button')
+        const input = document.querySelector('input')
+        const img = document.querySelector('img')
+
+        button.addEventListener('click',function(){
+           fetch('http://jsonplaceholder.typicode.com/users',{
+            method:'POST',
+            body:JSON.stringify({name:input.value}),
+            headers:{
+                'Content-type':'application/json'
+            }
+           })
+           .then(response => response.json())
+              .then(data => {
+                console.log(data);
+              })
+        })
+        
+    </script>
+</body>
+</html>
